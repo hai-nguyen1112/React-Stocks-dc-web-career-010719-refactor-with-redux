@@ -1,16 +1,29 @@
-import React, { Component } from 'react';
+import React, {useEffect} from 'react'
 import Header from './components/Header'
 import MainContainer from './containers/MainContainer'
+import {connect} from 'react-redux'
+import {fetchStocks} from './redux/actions'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header/>
-        <MainContainer/>
-      </div>
-    );
+const App = ({onFetchStocks}) => {
+  useEffect(() => onFetchStocks())
+  return (
+    <div>
+      <Header />
+      <MainContainer/>
+    </div>
+  )
+}
+
+const mapStateToProps = state => {
+  return {
+    stocks: state.stocks
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchStocks: () => dispatch(fetchStocks())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
