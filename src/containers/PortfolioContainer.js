@@ -1,10 +1,10 @@
 import React from 'react'
 import Stock from '../components/Stock'
 import {connect} from 'react-redux'
-import {clickedStock} from '../redux/actions'
+import {soldStock} from '../redux/actions'
 
-const PortfolioContainer = ({boughtStocks, onStockClick}) => {
-  let boughtStockCards = boughtStocks.map(stock => <Stock key={boughtStocks.indexOf(stock)} position={boughtStocks.indexOf(stock)} stock={stock} onStockClick={onStockClick}/>)
+const PortfolioContainer = ({boughtStocks, onStockSell}) => {
+  let boughtStockCards = boughtStocks.map(stock => <Stock key={boughtStocks.indexOf(stock)} position={boughtStocks.indexOf(stock)} stock={stock} onStockSell={onStockSell}/>)
   return (
     <div>
       <h2>My Portfolio</h2>
@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onStockClick: (stock, position) => dispatch(clickedStock(stock, position))
+    onStockSell: position => dispatch(soldStock(position))
   }
 }
 

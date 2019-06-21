@@ -1,9 +1,9 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
-const Stock = ({stock, onStockClick, position}) => (
+const Stock = ({stock, position, history, onStockSell}) => (
   <div>
-
-    <div className="card" onClick={() => onStockClick(stock, position)}>
+    <div className="card" onClick={() => position === undefined ? history.push(`/stocks/${stock.id}`) : onStockSell(position)}>
       <div className="card-body">
         <h5 className="card-title">{
             stock.name.charAt(0).toUpperCase() + stock.name.slice(1)
@@ -13,9 +13,7 @@ const Stock = ({stock, onStockClick, position}) => (
           }</p>
       </div>
     </div>
-
-
   </div>
-);
+)
 
-export default Stock
+export default withRouter(Stock)

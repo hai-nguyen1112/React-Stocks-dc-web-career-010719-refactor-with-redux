@@ -1,15 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class Header extends Component {
+const Header = () => (
+  <header style={{marginTop: "25px", marginBottom: "25px"}}>
+    <h1 className="text-center">Flatiron Stock Exchange</h1>
+  </header>
+)
 
-  render() {
-    return (
-      <header>
-        <h1 className="text-center">Flatiron Stock Exchange</h1>
-      </header>
-    );
-  }
-
-}
-
-export default Header;
+export default Header
