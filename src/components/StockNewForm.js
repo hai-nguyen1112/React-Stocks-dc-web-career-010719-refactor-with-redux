@@ -36,9 +36,9 @@ const StockNewForm = ({onFormSubmit}) => {
   return (
     <div style={{marginTop: "10px"}}>
       <h1 style={{textAlign: "center"}}>Add New Stock</h1>
-      <Form onSubmit={handleFormSubmit} style={{marginLeft: "40%", marginRight: "40%", marginBottom: "10px"}}>
+      <Form onSubmit={handleFormSubmit} style={{marginLeft: "40%", marginRight: "40%", marginBottom: "10px", backgroundColor: "lightPink", borderRadius: "5px", padding: "10px"}}>
         <Form.Field>
-          <label>Ticker</label>
+          <label style={{color: "red"}}>Ticker</label>
           <input
             placeholder="Enter Ticker..."
             name="Ticker"
@@ -48,7 +48,7 @@ const StockNewForm = ({onFormSubmit}) => {
           />
         </Form.Field>
         <Form.Field>
-          <label>Company Name</label>
+          <label style={{color: "red"}}>Company Name</label>
           <input
             placeholder="Enter Company Name..."
             name="Name"
@@ -58,7 +58,7 @@ const StockNewForm = ({onFormSubmit}) => {
           />
         </Form.Field>
         <Form.Field>
-          <label>Type</label>
+          <label style={{color: "red"}}>Type</label>
           <input
             placeholder="Enter Type..."
             name="Type"
@@ -68,7 +68,7 @@ const StockNewForm = ({onFormSubmit}) => {
           />
         </Form.Field>
         <Form.Field>
-          <label>Price</label>
+          <label style={{color: "red"}}>Price</label>
           <input
             placeholder="Enter Price..."
             name="Price"
@@ -77,7 +77,7 @@ const StockNewForm = ({onFormSubmit}) => {
             onChange={e => handleChange(e)}
           />
         </Form.Field>
-        <Button type="submit">Submit</Button>
+        <Button inverted color="white" type="submit">Submit</Button>
       </Form>
     </div>
   )
