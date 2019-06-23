@@ -43,7 +43,6 @@ class StockEditForm extends Component {
     }
     this.props.onStockEdit(this.props.stock.id, editData)
     this.props.history.push(`/stocks/${this.props.stock.id}`)
-    console.log(editData)
   }
 
   render() {
