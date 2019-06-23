@@ -67,4 +67,27 @@ function postedNewStock(newStock) {
   }
 }
 
-export {fetchStocks, changedSortValue, changedFilterValue, postNewStock, addedStock, soldStock}
+function editStock(id, editData) {
+  return dispatch => {
+    fetch(`http://localhost:3000/stocks/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(editData)
+    }).then(res => res.json())
+      .then(updatedStock => {
+        dispatch(editedStock(updatedStock))
+      })
+  }
+}
+
+function editedStock(stock) {
+  return {
+    type: "STOCK_WAS_EDITED",
+    payload: stock
+  }
+}
+
+export {fetchStocks, changedSortValue, changedFilterValue, postNewStock, addedStock, soldStock, editStock}

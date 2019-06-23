@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {fetchStocks} from './redux/actions'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import StockDetail from './components/StockDetail'
+import StockEditForm from './components/StockEditForm'
 
 class App extends React.Component {
   componentDidMount() {
@@ -16,6 +17,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Switch>
+          <Route path="/stocks/:id/edit" component={StockEditForm} />
           <Route path="/stocks/:id" component={StockDetail} />
           <Route path="/stocks" component={MainContainer} />
           <Redirect from="*" to="/stocks" />

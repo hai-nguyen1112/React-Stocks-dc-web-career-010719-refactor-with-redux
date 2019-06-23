@@ -26,7 +26,7 @@ const StockDetail = ({stock, onStockAdd, history}) => {
               <br />
               <Link to="/stocks"><Button>Back</Button></Link>
               <Button onClick={() => {onStockAdd(stock); history.push("/stocks")}}>Add</Button>
-              <Button>Edit</Button>
+              <Link to={`/stocks/${stock.id}/edit`}><Button>Edit</Button></Link>
             </Card.Content>
           </Card>
         }

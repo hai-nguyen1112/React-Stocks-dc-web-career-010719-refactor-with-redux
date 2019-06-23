@@ -8,6 +8,14 @@ const stocksReducer = (oldState=[], action) => {
     case "NEW_STOCK_WAS_POSTED":
       stocks.push(action.payload)
       return stocks
+    case "STOCK_WAS_EDITED":
+      return stocks.map(stock => {
+        if (stock.id === action.payload.id) {
+          return action.payload
+        } else {
+          return stock
+        }
+      })
     default:
       return stocks
   }
