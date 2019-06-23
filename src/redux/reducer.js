@@ -16,6 +16,8 @@ const stocksReducer = (oldState=[], action) => {
           return stock
         }
       })
+    case "STOCK_WAS_DELETED":
+      return stocks.filter(stock => stock.id !== action.payload)
     default:
       return stocks
   }
@@ -25,7 +27,8 @@ const boughtStocksReducer = (oldState=[], action) => {
   let boughtStocks = [...oldState]
   switch (action.type) {
     case "STOCK_WAS_SOLD":
-      return boughtStocks.filter(stock => boughtStocks.indexOf(stock) !== action.payload)
+      boughtStocks.splice(action.payload, 1)
+      return boughtStocks
     case "STOCK_WAS_ADDED":
       boughtStocks.push(action.payload)
       return boughtStocks

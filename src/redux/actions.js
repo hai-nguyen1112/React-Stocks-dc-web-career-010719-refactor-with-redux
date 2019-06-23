@@ -90,4 +90,23 @@ function editedStock(stock) {
   }
 }
 
-export {fetchStocks, changedSortValue, changedFilterValue, postNewStock, addedStock, soldStock, editStock}
+function deleteStock(id) {
+  return dispatch => {
+    fetch(`http://localhost:3000/stocks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }).then(dispatch(deletedStock(id)))
+  }
+}
+
+function deletedStock(id) {
+  return {
+    type: "STOCK_WAS_DELETED",
+    payload: id
+  }
+}
+
+export {fetchStocks, changedSortValue, changedFilterValue, postNewStock, addedStock, soldStock, editStock, deleteStock}

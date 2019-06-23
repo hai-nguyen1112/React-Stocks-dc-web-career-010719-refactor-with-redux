@@ -4,7 +4,11 @@ import {connect} from 'react-redux'
 import {soldStock} from '../redux/actions'
 
 const PortfolioContainer = ({boughtStocks, onStockSell}) => {
-  let boughtStockCards = boughtStocks.map(stock => <Stock key={boughtStocks.indexOf(stock)} position={boughtStocks.indexOf(stock)} stock={stock} onStockSell={onStockSell}/>)
+  let position = -1
+  let boughtStockCards = boughtStocks.map(stock => {
+    position++
+    return (<Stock key={position} position={position} stock={stock} onStockSell={onStockSell}/>)
+  })
   return (
     <div>
       <h2>My Portfolio</h2>

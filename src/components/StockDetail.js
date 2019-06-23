@@ -3,9 +3,9 @@ import {Card, Image, Button} from 'semantic-ui-react'
 import {withRouter, Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {isEmpty} from "lodash"
-import {addedStock} from '../redux/actions'
+import {addedStock, deleteStock} from '../redux/actions'
 
-const StockDetail = ({stock, onStockAdd, history}) => {
+const StockDetail = ({stock, onStockAdd, history, onStockDelete}) => {
   return (
     <div style={{marginTop: "25px", display: "flex", justifyContent: "center", alignItems: "center"}}>
         {
@@ -27,6 +27,7 @@ const StockDetail = ({stock, onStockAdd, history}) => {
               <Link to="/stocks"><Button>Back</Button></Link>
               <Button onClick={() => {onStockAdd(stock); history.push("/stocks")}}>Add</Button>
               <Link to={`/stocks/${stock.id}/edit`}><Button>Edit</Button></Link>
+              <Button onClick={() => {onStockDelete(stock.id); history.push("/stocks")}} style={{marginTop: "10px"}}>Delete</Button>
             </Card.Content>
           </Card>
         }
@@ -42,7 +43,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onStockAdd: stock => dispatch(addedStock(stock))
+    onStockAdd: stock => dispatch(addedStock(stock)),
+    onStockDelete: id => dispatch(deleteStock(id))
   }
 }
 
